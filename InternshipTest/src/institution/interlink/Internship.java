@@ -1,5 +1,8 @@
 package institution.interlink;
+
 import person.Student;
+import person.consciousness.Knowledge;
+import institution.University;
 
 import java.util.ArrayList;
 
@@ -7,6 +10,7 @@ public class Internship {
     University university;
 
     private String name;
+    double averageKnowledge;
 
     ArrayList<Student> internList = new ArrayList();                        // a list of intern students
 
@@ -16,8 +20,20 @@ public class Internship {
     }
 
     public void setStudent() {                 // calculates what students suit for internship and stores `em in the internList
-
         Student intern = new Student();                                    // an object for temporal storage
+
+        calculateAverage(intern);
+
+        for(int n = 0; n < university.studentList.size(); n++) {
+            intern = university.studentList.get(n);
+            if(intern.getKnowledge() > averageKnowledge) {          // stores students that meet the requirements in the internList
+                internList.add(intern);
+            }
+
+        }
+    }
+
+    public void calculateAverage(Student intern){
 
         int sum = 0;
         int i;
@@ -26,14 +42,8 @@ public class Internship {
             sum += intern.getKnowledge();
         }
 
-        double averageKnowledge = sum / i;                                 // calculates average
+        averageKnowledge = sum / i;                                 // calculates average
 
-        for(int n = 0; n < university.studentList.size(); n++) {
-            intern = university.studentList.get(n);
-            if(intern.getKnowledge() > averageKnowledge) {          // stores students that meet the requirements in the internList
-                internList.add(intern);
-            }
-        }
     }
 
     public void getStudents() {                                     // prints out internList (students with knowledge above average)

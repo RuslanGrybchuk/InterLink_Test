@@ -1,6 +1,6 @@
 package institution;
-import person.Student;
 
+import person.Student;
 
 import java.util.ArrayList;
 
@@ -23,5 +23,3 @@ public class University {
         studentList.add(student);
     }
 }
-
-

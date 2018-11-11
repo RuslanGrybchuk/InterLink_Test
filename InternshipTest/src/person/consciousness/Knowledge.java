@@ -1,5 +1,6 @@
 package person.consciousness;
 
+
 public class Knowledge {
 
     private int level;
