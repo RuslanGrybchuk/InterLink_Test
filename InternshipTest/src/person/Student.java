@@ -1,7 +1,7 @@
 package person;
+
 import person.consciousness.Knowledge;
 
-import java.util.Scanner;
 
 public class Student {
 
@@ -20,15 +20,9 @@ public class Student {
     public Student() {                                              // used in Internship class for storing temporal objects
     }
 
-    public Student(String name) {
-        this.name = name;                                           // sets name and knowledge
-        setKnowledge();
+    public Student(String name, int knowledge) {                     // sets name and knowledge
+        this.name = name;
+        this.knowledge = knowledge;
     }
 
-    public void setKnowledge() {
-        System.out.println("Enter the knowledge level");
-        Scanner scan = new Scanner(System.in);
-        Knowledge instance = new Knowledge(scan.nextInt());         // invokes Knowledge class constructor with a scanned parameter
-        this.knowledge = instance.getLevel();
-    }
 }
